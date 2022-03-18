@@ -36,7 +36,7 @@ def verifica_sorteio(sorteio:int) -> bool:
 
 def sortear() -> None:
     for _ in range(200):
-        if len(numeros_sorteados) < 6:
+        if len(numeros_sorteados) < quantidade_numeros:
             sorteio_temp = random.randint(1,60)
             if verifica_sorteio(sorteio_temp):
                 continue
