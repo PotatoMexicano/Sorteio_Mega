@@ -1,0 +1,48 @@
+import random
+
+quantidade_numeros = 6
+numeros_sorteados = []
+numeros_excluidos = []
+
+def main() -> None:
+    numero_sorteios = input("Números de sorteios (1 padrão): ")
+    
+    while True:
+        delete = input("Não sortear o número [1-60] (Enter para continuar): ")
+        if delete == "":
+            break
+        else:
+            if delete.isnumeric():
+                numeros_excluidos.append(int(delete))
+            else:
+                pass
+    
+    for _ in range(int(numero_sorteios)):
+        sortear()
+        numeros_sorteados.clear()
+
+def gerar_sorteio() -> int:
+    return random.randint(1,60)
+
+def verifica_sorteio(sorteio:int) -> bool:
+    if sorteio in numeros_sorteados:
+        return False
+    else:
+        if sorteio in numeros_excluidos:
+            return False
+        else:
+            numeros_sorteados.append(sorteio)
+            return True
+
+def sortear() -> None:
+    for _ in range(200):
+        if len(numeros_sorteados) < 6:
+            sorteio_temp = random.randint(1,60)
+            if verifica_sorteio(sorteio_temp):
+                continue
+        else:
+            break
+    print(f"\nResultado: {numeros_sorteados}")
+
+main()
+input()
