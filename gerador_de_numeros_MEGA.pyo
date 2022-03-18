@@ -1,6 +1,8 @@
 import random
 
 quantidade_numeros = 6
+numero_minimo = 1
+numero_maximo = 60
 numeros_sorteados = []
 numeros_excluidos = []
 
@@ -22,7 +24,7 @@ def main() -> None:
         numeros_sorteados.clear()
 
 def gerar_sorteio() -> int:
-    return random.randint(1,60)
+    return random.randint(numero_minimo,numero_maximo)
 
 def verifica_sorteio(sorteio:int) -> bool:
     if sorteio in numeros_sorteados:
@@ -37,7 +39,7 @@ def verifica_sorteio(sorteio:int) -> bool:
 def sortear() -> None:
     for _ in range(200):
         if len(numeros_sorteados) < quantidade_numeros:
-            sorteio_temp = random.randint(1,60)
+            sorteio_temp = random.randint(numero_minimo,numero_maximo)
             if verifica_sorteio(sorteio_temp):
                 continue
         else:
